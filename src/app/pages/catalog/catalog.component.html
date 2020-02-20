@@ -1,0 +1,13 @@
+<p uk-margin>
+  <button class="uk-button uk-button-default uk-margin-medium-right">Добавить</button>
+  <button class="uk-button uk-button-primary uk-margin-medium-right">Редактировать</button>
+  <button class="uk-button uk-button-secondary uk-margin-medium-right">Удалить</button>
+</p>
+<div *ngIf="cars" class="uk-child-width-1-3@m uk-grid-small uk-grid-match" uk-grid>
+  <div *ngFor="let item of cars | async">
+    <div class="uk-card uk-card-default uk-card-body">
+      <h3 class="uk-card-title">{{ item.Name }}</h3>
+      <p>{{ item.Name }}</p>
+    </div>
+  </div>
+</div>

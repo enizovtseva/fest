@@ -1,16 +1,23 @@
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { LayoutDefaultComponent } from './layout/layout-default/layout-default.component';
+import { CatalogComponent } from './pages/catalog/catalog.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LayoutDefaultComponent,
+    CatalogComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

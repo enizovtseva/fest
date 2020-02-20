@@ -1,0 +1,34 @@
+// COLOR
+
+$color-white:      #fff;
+$color-light:      #f7f7f7;
+$color-grey:       #e6e6e6;
+$color-dark:       #3c3c3c;
+$color-black:      #000;
+
+$color-lilac:      #96588a;
+$color-green:      #71b02f;
+
+:root {
+  --color-white:      #fff;
+  --color-light:      #f7f7f7;
+  --color-grey:       #e6e6e6;
+  --color-dark:       #3c3c3c;
+  --color-black:      #000;
+
+  --color-lilac:      #96588a;
+  --color-green:      #71b02f;
+}
+
+
+// FONT
+
+$font-family-base:   'ProximaNova';
+
+
+// UIKIT VAR
+
+$global-color:        $color-dark;
+$global-font-family:  $font-family-base;
+
+$navbar-background:   $color-grey;

@@ -7,5 +7,4 @@ declare var UIkit: any;
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'fest';
 }
