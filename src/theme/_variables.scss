@@ -28,7 +28,24 @@ $font-family-base:   'ProximaNova';
 
 // UIKIT VAR
 
-$global-color:        $color-dark;
-$global-font-family:  $font-family-base;
+$global-color:                     $color-dark;
+$global-emphasis-color:            $color-dark;
+$global-font-family:               $font-family-base;
+$global-border:                    $color-grey;
 
-$navbar-background:   $color-grey;
+$global-primary-background:        $color-lilac;
+$global-success-background:        $color-green;
+$global-secondary-background:      $color-green;
+
+$inverse-global-color:             $color-white;
+
+$button-default-background:        $color-grey;
+$button-default-hover-background:  darken($button-default-background, 5%);
+$button-default-active-background: darken($button-default-background, 10%);
+
+$navbar-background:                $color-lilac;
+$navbar-nav-item-color:            $color-grey;
+$navbar-nav-item-hover-color:      $color-white;
+$navbar-nav-item-onclick-color:    $color-white;
+$navbar-nav-item-active-color:     $color-white;
+$navbar-item-color:                $color-white;

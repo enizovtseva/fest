@@ -1,13 +1,36 @@
-<p uk-margin>
-  <button class="uk-button uk-button-default uk-margin-medium-right">Добавить</button>
-  <button class="uk-button uk-button-primary uk-margin-medium-right">Редактировать</button>
-  <button class="uk-button uk-button-secondary uk-margin-medium-right">Удалить</button>
+<p class="uk-margin-medium-bottom">
+  <button (click)="carAdd(item)" class="uk-button uk-button-secondary uk-margin-right">Добавить</button>
+  <button (click)="carEdit(item)" class="uk-button uk-button-default uk-margin-right">Редактировать</button>
+  <button (click)="carDelete(item.Name)" class="uk-button uk-button-default uk-margin-right">Удалить</button>
 </p>
 <div *ngIf="cars" class="uk-child-width-1-3@m uk-grid-small uk-grid-match" uk-grid>
   <div *ngFor="let item of cars | async">
-    <div class="uk-card uk-card-default uk-card-body">
-      <h3 class="uk-card-title">{{ item.Name }}</h3>
-      <p>{{ item.Name }}</p>
+    <div class="uk-card uk-card-default">
+      <div class="uk-card-media-top">
+        <img *ngIf="item.Photo" src="{{ item.Photo }}" />
+        <img *ngIf="!item.Photo" src="./assets/images/placeholder-photo.png" />
+      </div>
+      <div class="uk-card-body">
+        <p class="uk-card-title uk-text-capitalize uk-h3 uk-margin-remove-bottom">{{ item.Name }}</p>
+        <p class="uk-text-meta uk-margin-remove-top">{{ item.Year }}, {{ item.Origin }}</p>
+        <p><span class="uk-badge uk-padding-small">{{ item.Price }} {{ item.Currency }}</span></p>
+        <div class="uk-grid-collapse uk-flex-middle" uk-grid>
+          <div class="uk-width-2-5 uk-text-meta">Horsepower:</div>
+          <div class="uk-width-3-5">{{ item.Horsepower }}</div>
+          <div class="uk-width-2-5 uk-text-meta">Miles per Gallon:</div>
+          <div class="uk-width-3-5">{{ item.Miles_per_Gallon }}</div>
+          <div class="uk-width-2-5 uk-text-meta">Cylinders:</div>
+          <div class="uk-width-3-5">{{ item.Cylinders }}</div>
+          <div class="uk-width-2-5 uk-text-meta">Acceleration:</div>
+          <div class="uk-width-3-5">{{ item.Acceleration }}</div>
+          <div class="uk-width-2-5 uk-text-meta">Weight in lbs:</div>
+          <div class="uk-width-3-5">{{ item.Weight_in_lbs }}</div>
+        </div>
+      </div>
+      <div class="uk-card-footer">
+        <a (click)="carEdit(item)" class="uk-button"><span uk-icon="icon: pencil"></span></a>
+        <a (click)="carDelete(item.Name)" class="uk-button"><span uk-icon="icon: trash"></span></a>
+      </div>
     </div>
   </div>
 </div>

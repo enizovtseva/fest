@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 
 import { LayoutDefaultComponent } from './layout/layout-default/layout-default.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
+import { CarDetailsComponent } from './pages/car-details/car-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutDefaultComponent,
-    CatalogComponent
+    CatalogComponent,
+    CarDetailsComponent
   ],
   imports: [
     BrowserModule,
