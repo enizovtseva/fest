@@ -1,23 +1,102 @@
-<form>
-  <fieldset class="uk-fieldset">
+<form [formGroup]="carData" (ngSubmit)="SubmitCar()" class="uk-form-horizontal uk-grid-small" [class.displayErrors] = "showFormErrors" uk-grid>
 
-    <div class="uk-margin">
-      <input class="uk-input" type="text" placeholder="Input">
-    </div>
-    <div class="uk-margin">
-      <input class="uk-input" type="text" placeholder="Input">
-    </div>
-    <div class="uk-margin">
-      <input class="uk-input" type="text" placeholder="Input">
-    </div>
-    <div class="uk-margin">
-      <input class="uk-input" type="text" placeholder="Input">
-    </div>
-    <div class="uk-margin">
-      <input class="uk-input" type="text" placeholder="Input">
-    </div>
+  <div class="uk-width-1-1">
+      <label class="uk-form-label" for="Car-Name">Name</label>
+      <div class="uk-form-controls">
+          <input class="uk-input" 
+                 id="Car-Name" 
+                 type="text" 
+                 placeholder="Enter Name"
+                 formControlName="Name" />
+      </div>
+  </div>
 
-    <button [routerLink]="['/']" class="uk-button uk-button-secondary uk-margin-right">Добавить</button>
+  <div class="uk-width-1-2@s">
+      <label class="uk-form-label" for="Car-Year">Year</label>
+      <div class="uk-form-controls">
+          <input class="uk-input" 
+                 id="Car-Year" 
+                 type="text" 
+                 placeholder="Enter Year" 
+                 [value]="Car ? Car.Year : ''"
+                 formControlName="Year" />
+      </div>
+  </div>
 
-  </fieldset>
+  <div class="uk-width-1-2@s">
+      <label class="uk-form-label" for="Car-Origin">Origin</label>
+      <div class="uk-form-controls">
+          <input class="uk-input" id="Car-Origin" type="text" placeholder="Enter Origin" [value]="Car ? Car.Origin : ''" formControlName="Origin" />
+      </div>
+  </div>
+
+  <div class="uk-width-1-2@s">
+      <label class="uk-form-label" for="Car-Price">Price</label>
+      <div class="uk-form-controls">
+          <input class="uk-input" id="Car-Price" type="text" placeholder="Enter Price" [value]="Car ? Car.Price : ''" formControlName="Price" />
+      </div>
+  </div>
+
+  <div class="uk-width-1-2@s">
+      <label class="uk-form-label" for="Car-Currency">Currency</label>
+      <div class="uk-form-controls">
+          <input class="uk-input" id="Car-Currency" type="text" placeholder="Enter Currency" [value]="Car ? Car.Currency : ''" formControlName="Currency" />
+      </div>
+  </div>
+
+  <div class="uk-width-1-1">
+      <label class="uk-form-label" for="Car-Displacement">Displacement</label>
+      <div class="uk-form-controls">
+          <input class="uk-input" id="Car-Displacement" type="text" placeholder="Enter Displacement" [value]="Car ? Car.Displacement : ''" formControlName="Displacement" />
+      </div>
+  </div>
+
+  <div class="uk-width-1-1">
+      <label class="uk-form-label" for="Car-Horsepower">Horsepower</label>
+      <div class="uk-form-controls">
+          <input class="uk-input" id="Car-Horsepower" type="text" placeholder="Enter Horsepower" [value]="Car ? Car.Horsepower : ''" formControlName="Horsepower" />
+      </div>
+  </div>
+
+  <div class="uk-width-1-1">
+      <label class="uk-form-label" for="Car-Miles_per_Gallon">Miles per Gallon</label>
+      <div class="uk-form-controls">
+          <input class="uk-input" id="Car-Miles_per_Gallon" type="text" placeholder="Enter Miles per Gallon" [value]="Car ? Car.Miles_per_Gallon : ''" formControlName="Miles_per_Gallon" />
+      </div>
+  </div>
+
+  <div class="uk-width-1-1">
+      <label class="uk-form-label" for="Car-Cylinders">Cylinders</label>
+      <div class="uk-form-controls">
+          <input class="uk-input" id="Car-Cylinders" type="text" placeholder="Enter Cylinders" [value]="Car ? Car.Cylinders : ''" formControlName="Cylinders" />
+      </div>
+  </div>
+
+  <div class="uk-width-1-1">
+      <label class="uk-form-label" for="Car-Acceleration">Acceleration</label>
+      <div class="uk-form-controls">
+          <input class="uk-input" id="Car-Acceleration" type="text" placeholder="Enter Acceleration" [value]="Car ? Car.Acceleration : ''" formControlName="Acceleration" />
+      </div>
+  </div>
+
+  <div class="uk-width-1-1">
+      <label class="uk-form-label" for="Car-Weight_in_lbs">Weight in lbs</label>
+      <div class="uk-form-controls">
+          <input class="uk-input" id="Car-Weight_in_lbs" type="text" placeholder="Enter Weight in lbs" [value]="Car ? Car.Weight_in_lbs : ''" formControlName="Weight_in_lbs" />
+      </div>
+  </div>
+
+  <div class="uk-width-1-1">
+    <p *ngIf="showFormErrors && carData.controls['Name'].errors?.required" class="uk-text-danger">Name is required.</p>
+    <p *ngIf="showFormErrors && carData.controls['Year'].errors?.required" class="uk-text-danger">Year is required.</p>
+    <p *ngIf="showFormErrors && carData.controls['Origin'].errors?.required" class="uk-text-danger">Origin is required.</p>
+    <p *ngIf="showFormErrors && carData.controls['Price'].errors?.required" class="uk-text-danger">Price is required.</p>
+    <p *ngIf="showFormErrors && carData.controls['Currency'].errors?.required" class="uk-text-danger">Currency is required.</p>
+  </div>
+
+  <div class="uk-width-1-1 uk-text-right">
+    <button type="submit" *ngIf="!Car" class="uk-button uk-button-secondary uk-margin-left">Добавить</button>
+    <button type="submit" *ngIf="Car" class="uk-button uk-button-secondary uk-margin-left">Изменить</button>
+  </div>
+
 </form>

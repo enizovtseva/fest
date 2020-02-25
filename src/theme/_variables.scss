@@ -37,6 +37,11 @@ $global-primary-background:        $color-lilac;
 $global-success-background:        $color-green;
 $global-secondary-background:      $color-green;
 
+$global-link-color:                $global-secondary-background;
+$base-link-color:                  $global-link-color;
+$global-link-hover-color:          darken($global-link-color, 15%);
+$base-link-hover-color:            $global-link-hover-color;
+
 $inverse-global-color:             $color-white;
 
 $button-default-background:        $color-grey;

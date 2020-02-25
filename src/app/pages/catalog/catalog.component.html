@@ -1,20 +1,29 @@
 <p class="uk-margin-medium-bottom">
-  <button (click)="carAdd(item)" class="uk-button uk-button-secondary uk-margin-right">Добавить</button>
-  <button (click)="carEdit(item)" class="uk-button uk-button-default uk-margin-right">Редактировать</button>
-  <button (click)="carDelete(item.Name)" class="uk-button uk-button-default uk-margin-right">Удалить</button>
+  <button (click)="carAdd($event, item)" class="uk-button uk-button-secondary uk-margin-right">Добавить</button>
+  <button (click)="carEdit($event, carSelected)" class="uk-button uk-button-default uk-margin-right" [disabled]="!carSelected">Редактировать</button>
+  <button (click)="carDelete($event, carSelected.Name)" class="uk-button uk-button-default uk-margin-right" [disabled]="!carSelected">Удалить</button>
 </p>
 <div *ngIf="cars" class="uk-child-width-1-3@m uk-grid-small uk-grid-match" uk-grid>
   <div *ngFor="let item of cars | async">
-    <div class="uk-card uk-card-default">
+    <div class="uk-card uk-card-default uk-card-hover" style="cursor:pointer"
+         (click)="carSelect($event, item)">
+      <div *ngIf="carSelected && carSelected.Name == item.Name" 
+            class="uk-overlay uk-overlay-primary uk-position-cover uk-position-z-index uk-flex uk-flex-center uk-flex-middle">
+        <span uk-icon="icon: check; ratio: 3.5"></span>
+      </div>
       <div class="uk-card-media-top">
-        <img *ngIf="item.Photo" src="{{ item.Photo }}" />
-        <img *ngIf="!item.Photo" src="./assets/images/placeholder-photo.png" />
+        <div class="uk-cover-container uk-height-small">
+          <img *ngIf="item.Photo" src="{{ item.Photo }}" uk-cover/>
+          <img *ngIf="!item.Photo" src="./assets/images/placeholder-photo.png" uk-cover/>
+        </div>
       </div>
       <div class="uk-card-body">
         <p class="uk-card-title uk-text-capitalize uk-h3 uk-margin-remove-bottom">{{ item.Name }}</p>
         <p class="uk-text-meta uk-margin-remove-top">{{ item.Year }}, {{ item.Origin }}</p>
         <p><span class="uk-badge uk-padding-small">{{ item.Price }} {{ item.Currency }}</span></p>
         <div class="uk-grid-collapse uk-flex-middle" uk-grid>
+          <div class="uk-width-2-5 uk-text-meta">Displacement:</div>
+          <div class="uk-width-3-5">{{ item.Displacement }}</div>
           <div class="uk-width-2-5 uk-text-meta">Horsepower:</div>
           <div class="uk-width-3-5">{{ item.Horsepower }}</div>
           <div class="uk-width-2-5 uk-text-meta">Miles per Gallon:</div>
@@ -28,8 +37,9 @@
         </div>
       </div>
       <div class="uk-card-footer">
-        <a (click)="carEdit(item)" class="uk-button"><span uk-icon="icon: pencil"></span></a>
-        <a (click)="carDelete(item.Name)" class="uk-button"><span uk-icon="icon: trash"></span></a>
+        <span (click)="carEdit($event, item)" class="uk-icon-button uk-margin-right" style="cursor:pointer" uk-icon="icon: pencil"></span>
+        <span (click)="carDelete($event, item.Name)" class="uk-icon-button uk-margin-right" style="cursor:pointer" uk-icon="icon: trash"></span>
+        <span (click)="addCart($event, item.Name)" class="uk-icon-button" style="cursor:pointer" uk-icon="icon: plus"></span>
       </div>
     </div>
   </div>

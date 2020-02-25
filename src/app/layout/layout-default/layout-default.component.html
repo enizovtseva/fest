@@ -1,25 +1,32 @@
-<header>
+<header uk-sticky>
   <nav class="uk-navbar-container uk-padding uk-padding-remove-vertical" uk-navbar>
 
     <div class="uk-navbar-left">
       <p class="uk-h1 uk-margin-remove-bottom uk-margin-medium-right uk-light">LOGO</p>
       <ul class="uk-navbar-nav">
-        <li class="uk-active"><a href="#">Каталог</a></li>
-        <li><a href="#">Магазины</a></li>
-        <li><a href="#">Доставка</a></li>
+        <li class="uk-active"><a [routerLink]="['/']">Каталог</a></li>
+        <li><a [routerLink]="['/']">Магазины</a></li>
+        <li><a [routerLink]="['/']">Доставка</a></li>
       </ul>
     </div>
 
     <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
-          <li><a href="#" uk-icon="icon: cart"></a></li>
           <li>
-            <a href="#" uk-icon="icon: user"></a>
+            <a [routerLink]="['/']"><span uk-icon="icon: cart"></span>({{ cartService.count }})</a>
+            <div *ngIf="cartService.carsName && cartService.carsName.length > 0" class="uk-navbar-dropdown">
+              <ul class="uk-nav uk-navbar-dropdown-nav">
+                <li *ngFor="let item of cartService.carsName"><a [routerLink]="['/']" class="uk-text-capitalize">{{ item }}</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a [routerLink]="['/']" uk-icon="icon: user"></a>
             <div class="uk-navbar-dropdown">
               <ul class="uk-nav uk-navbar-dropdown-nav">
-                  <li class="uk-active"><a href="#">Профиль</a></li>
-                  <li><a href="#">Item</a></li>
-                  <li><a href="#">Item</a></li>
+                <li><a [routerLink]="['/']">Item</a></li>
+                <li><a [routerLink]="['/']">Item</a></li>
+                <li><a [routerLink]="['/']">Item</a></li>
               </ul>
             </div>
           </li>
@@ -29,7 +36,7 @@
   </nav>
 </header>
 
-<section class="uk-padding-large">
+<section class="uk-section">
   <div class="uk-container">
     <router-outlet></router-outlet>
   </div>
