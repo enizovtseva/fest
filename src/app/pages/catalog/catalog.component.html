@@ -1,5 +1,5 @@
 <p class="uk-margin-medium-bottom">
-  <button (click)="carAdd($event, item)" class="uk-button uk-button-secondary uk-margin-right">Добавить</button>
+  <button (click)="carAdd($event)" class="uk-button uk-button-secondary uk-margin-right">Добавить</button>
   <button (click)="carEdit($event, carSelected)" class="uk-button uk-button-default uk-margin-right" [disabled]="!carSelected">Редактировать</button>
   <button (click)="carDelete($event, carSelected.Name)" class="uk-button uk-button-default uk-margin-right" [disabled]="!carSelected">Удалить</button>
 </p>
